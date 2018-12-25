@@ -33,6 +33,6 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({...state})
 
 export default connect(mapStateToProps)(Home)
