@@ -145,11 +145,21 @@ const initState = {
       }
     }
   },
-  state: 0 // -1: loading; 0: render; 1: permission; 2: scp; 3: conent_script; 4: api
+  state: 2 // -1: loading; 0: render; 1: permission; 2: scp; 3: conent_script; 4: api
 }
 
 const analyze = (state = initState, action) => {
   switch (action.type) {
+    case 'SEND_ANALYZE_REQUEST':
+      return {
+        ...state,
+        state: -1
+      }
+    case 'UPDATE_ANALYZE_RESULT':
+      return {
+        ...state,
+        result: action.payload.result
+      }
     default:
       return state
   }

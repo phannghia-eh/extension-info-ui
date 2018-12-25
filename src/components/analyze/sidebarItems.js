@@ -8,11 +8,11 @@ class sidebarItems extends React.Component {
 
   render() {
 
-
-
     return(
-      <ul>
+      <ul className='nav flex-column mb-2'>
+        <li>
 
+        </li>
       </ul>
     )
   }

@@ -27,11 +27,6 @@ import Result from './components/result'
 
 const store = createStore(
   rootReducer,
-  {
-    auth: {
-      user:JSON.parse(localStorage.getItem('user'))
-    }
-  },
   compose(
     applyMiddleware(thunkMiddleware),
     window.devToolsExtension ? window.devToolsExtension() : f => f
