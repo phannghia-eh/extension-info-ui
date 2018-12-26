@@ -39,8 +39,6 @@ const history = syncHistoryWithStore(browserHistory, store);
 render(
   <Provider store={store}>
     <Router history={history}>
-      <Route path='/dashboard' component={Home}></Route>
-      <Route path='/result' component={Result}></Route>
       <Route path='/' component={Home}></Route>
     </Router>
   </Provider>,

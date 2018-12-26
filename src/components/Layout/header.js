@@ -24,7 +24,7 @@ class Header extends Component {
         </Link>
 
         <input ref="link"
-               value='https://chrome.google.com/webstore/detail/onenote-web-clipper/gojbdfnpnhogfdgjbigejoaolejmgdhk?hl=vi'
+               // value='https://chrome.google.com/webstore/detail/onenote-web-clipper/gojbdfnpnhogfdgjbigejoaolejmgdhk?hl=vi'
                className="chrome-extension-input form-control form-control-dark w-100"
                type="text"
                placeholder="https://chrome.google.com/webstore/detail/example-extension-name/kbfnbca..."/>

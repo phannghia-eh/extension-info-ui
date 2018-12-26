@@ -5,8 +5,8 @@ const BASE_ANALYZE_API_URL = config.BASE_API_URL + 'analyze/'
 
 export function sendAnalyzeRequest(extensionLink) {
   return async dispatch => {
-    dispatch(startAnalyze)
-    axios
+    dispatch(startAnalyze())
+    return axios
       .post(BASE_ANALYZE_API_URL, {link: extensionLink})
       .then(response => {
         console.log(response)
@@ -18,6 +18,18 @@ export function sendAnalyzeRequest(extensionLink) {
       })
   }
 }
+
+export function changeViewState(state) {
+  return dispatch => {
+    dispatch(changeView(state))
+  }
+}
+
+const changeView = state => ({
+  type: 'CHANGE_VIEW_STATE',
+  payload: {state: state}
+})
+
 const startAnalyze = () => ({
   type: 'SEND_ANALYZE_REQUEST',
 })
