@@ -22,6 +22,7 @@ class API extends Component {
           {
             Header: 'Risk',
             maxWidth: 200,
+            accessor: 'risk',
             style: {'whiteSpace': 'unset'},
             Cell: row => {
               switch (row.original.risk) {
