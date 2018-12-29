@@ -1,6 +1,8 @@
 import {connect} from "react-redux";
 import React, {Component} from 'react'
 import ReactTable from 'react-table'
+import Highlight from 'react-highlight'
+import '../../../node_modules/highlight.js/styles/googlecode.css'
 
 class API extends Component {
   constructor(props) {
@@ -35,7 +37,32 @@ class API extends Component {
               }
             }
           },
-        ]
+        ],
+        subTable: {
+          columns: [
+            {
+              Header: 'file',
+              accessor: 'file',
+              minWidth: 100,
+              maxWidth: 150,
+            },
+            {
+              Header: 'Line',
+              accessor: 'line_number',
+              minWidth: 50,
+              maxWidth: 50,
+            },
+            {
+              Header: 'Code',
+              accessor: 'code',
+              Cell: row => {
+                return (
+                  <Highlight className="javascript hljs">{row.original.code}</Highlight>
+                )
+              }
+            }
+          ]
+        }
       }
     }
   }
@@ -48,10 +75,22 @@ class API extends Component {
     console.log(apiData)
     return (
       <ReactTable
-        showPaginationBottom={false}
-        defaultPageSize={apiData ? apiData.length : 5}
-        data={apiData}
-        columns={this.state.table.columns}/>
+          showPagination={false}
+          defaultPageSize={apiData ? apiData.length : 5}
+          data={apiData}
+          columns={this.state.table.columns}
+          SubComponent={row => {
+            console.log(row.original)
+            return (
+              <div style={{padding: '20px'}}>
+                <ReactTable
+                  data={row.original.lines_found}
+                  columns={this.state.table.subTable.columns}
+                  defaultPageSize={5}
+                />
+              </div>
+          )
+        }}/>
     )
   }
 

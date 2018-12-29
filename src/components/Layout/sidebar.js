@@ -51,7 +51,7 @@ class SideBar extends Component {
           <hr/>
 
           <h6 className="sidebar-heading justify-content-between align-items-center text-center text-muted"
-              style={{'margin-top': '1px !important'}}>
+              style={{marginTop: '1px !important'}}>
             <span>CHROME EXTENSION TOOLS</span>
           </h6>
 
