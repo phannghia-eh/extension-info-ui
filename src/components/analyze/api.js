@@ -56,9 +56,12 @@ class API extends Component {
               Header: 'Code',
               accessor: 'code',
               Cell: row => {
-                return (
-                  <Highlight className="javascript hljs">{row.original.code}</Highlight>
-                )
+                 return row.original.lines.map((line, index) => {
+                   console.log("LINE", line)
+                   console.log("INDEX", index)
+                   console.log("CODE DATA", line[`code_${(index+1)}`])
+                   return <Highlight className="javascript hljs">{line[`code_${(index+1)}`]}</Highlight>
+                })
               }
             }
           ]
@@ -75,20 +78,20 @@ class API extends Component {
     console.log(apiData)
     return (
       <ReactTable
-          showPagination={false}
-          defaultPageSize={apiData ? apiData.length : 5}
-          data={apiData}
-          columns={this.state.table.columns}
-          SubComponent={row => {
-            console.log(row.original)
-            return (
-              <div style={{padding: '20px'}}>
-                <ReactTable
-                  data={row.original.lines_found}
-                  columns={this.state.table.subTable.columns}
-                  defaultPageSize={5}
-                />
-              </div>
+        showPagination={false}
+        defaultPageSize={apiData ? apiData.length : 5}
+        data={apiData}
+        columns={this.state.table.columns}
+        SubComponent={row => {
+          console.log(row.original)
+          return (
+            <div style={{padding: '20px'}}>
+              <ReactTable
+                data={row.original.lines_found}
+                columns={this.state.table.subTable.columns}
+                defaultPageSize={5}
+              />
+            </div>
           )
         }}/>
     )
