@@ -48,19 +48,23 @@ class API extends Component {
             },
             {
               Header: 'Line',
-              accessor: 'line_number',
+              // accessor: 'line_number',
               minWidth: 50,
               maxWidth: 50,
+              Cell: row => {
+                return row.original.lines.map((line, index) => {
+                  if (line[`code_${(index + 1)}`])
+                    return <Highlight className="javascript hljs m-0">{line[`line_${(index + 1)}`]}</Highlight>
+                })
+              }
             },
             {
               Header: 'Code',
               accessor: 'code',
               Cell: row => {
-                 return row.original.lines.map((line, index) => {
-                   console.log("LINE", line)
-                   console.log("INDEX", index)
-                   console.log("CODE DATA", line[`code_${(index+1)}`])
-                   return <Highlight className="javascript hljs">{line[`code_${(index+1)}`]}</Highlight>
+                return row.original.lines.map((line, index) => {
+                  if (line[`code_${(index + 1)}`])
+                    return <Highlight className="javascript hljs m-0">{line[`code_${(index + 1)}`]}</Highlight>
                 })
               }
             }
